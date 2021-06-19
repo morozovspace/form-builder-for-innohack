@@ -44,7 +44,7 @@ services:
   frontend-admin:
     container_name: frontend-admin
     build:
-      context: $PWD/services/frontend
+      context: $PWD/services/frontend-admin
       dockerfile: ./Dockerfile
     ports: 
       - 3001:3001 # Frontend app
