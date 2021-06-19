@@ -35,7 +35,6 @@ services:
       dockerfile: ./Dockerfile
     ports: 
       - 3000:3000 # Frontend app
-      - 3003:3003 # Storybook
     networks:
       - frontend
       - firebase

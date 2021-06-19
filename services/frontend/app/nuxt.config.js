@@ -1,8 +1,8 @@
+import firebase from "./modules/firebase"
 import pwa from "./modules/pwa"
 import axios from "./modules/axios"
 import styleResources from "./modules/styles"
 import head from "./modules/head"
-import sitemap from "./modules/sitemap"
 import i18n from "./modules/i18n"
 import env from "./modules/env"
 export default {
@@ -34,6 +34,7 @@ export default {
     "~/plugins/components.client",
     "~/plugins/axios",
   ],
+  firebase,
   buildModules: [
     "@nuxtjs/eslint-module"
   ],
@@ -43,7 +44,8 @@ export default {
     "@nuxtjs/style-resources",
     "@nuxtjs/svg-sprite",
     "nuxt-i18n",
-    "@nuxtjs/sitemap"
+    "cookie-universal-nuxt",
+    "@nuxtjs/firebase",
   ],
   axios,
   pwa,
@@ -52,7 +54,9 @@ export default {
     input: "~/assets/svg",
     output: "~/static/icons/",
   },
+  css: [
+    "@assets/styles/index.scss",
+  ],
   i18n,
-  sitemap,
   env
 }

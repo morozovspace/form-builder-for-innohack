@@ -28,7 +28,6 @@ Before visit link bellow <b>start</b> in dev mode or <b>build</b> for production
 
 - <a href="http://localhost:3000">Frontend app ( only for development )</a>
 - <a href="http://localhost:5000">Cloud Hosting ( local production build )</a>
-- <a href="http://localhost:3003">Storybook UI libary</a>
 - <a href="http://localhost:4000">Firebase Emulator UI</a>
 
 ### <b>Template Stack</b>
@@ -47,8 +46,6 @@ List of technologies used in project
 - #### <b>Frontend</b> | <a href="https://gitlab.com/reverse.studio/docker-firebase-nuxt-template/-/blob/master/services/frontend/README.md">More</a> #### 
     
     - Nuxt JS - Frontend framework
-    - Storybook - UI library
-
 
 - #### API Docs #### 
     - Swagger - API Docs generator

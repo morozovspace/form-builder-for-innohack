@@ -91,9 +91,7 @@ node_modules/
 
 # dotenv environment variables file
 *.env
-
-# storybook
-.nuxt-storybook
-storybook-static
-
 copy
+
+# ignore firebase seed
+firebase/app/seed

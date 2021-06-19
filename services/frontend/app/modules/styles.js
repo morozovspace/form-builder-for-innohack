@@ -1,10 +1,9 @@
 export default {
   scss: [
-    "@/assets/styles/default/_reset.scss",
-    "@/assets/styles/default/_variables.scss",
-    "@/assets/styles/default/_fonts.scss",
-    "@/assets/styles/default/_mixins.scss",
-    "@/assets/styles/default/_animation.scss",
-    "@/assets/styles/default/_themes.scss",
+    "@/assets/styles/_reset.scss",
+    "@/assets/styles/_variables.scss",
+    "@/assets/styles/_fonts.scss",
+    "@/assets/styles/_mixins.scss",
+    "@/assets/styles/_themes.scss",
   ],
 }

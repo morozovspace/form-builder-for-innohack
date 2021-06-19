@@ -1,0 +1,25 @@
+/*
+@import "_vars/_colors";
+@import "_vars/_font";
+@import "_vars/_breakpoints";
+
+body {
+  min-width: 320px;
+  font-family: $default-font;
+  font-size: $default-font-size;
+  background: $page-bg;
+  overflow: hidden;
+}
+.transparent-bg-on-progress {
+  .el-progress {
+    .el-progress-circle {
+      .el-progress-circle__track {
+        stroke: transparent;
+      }
+    }
+  }
+}
+*/
+body {
+  color: red;
+}
