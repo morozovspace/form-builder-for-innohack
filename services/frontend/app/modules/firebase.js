@@ -21,7 +21,7 @@ export default {
       },
       firestore: {
         memoryOnly: false,
-        emulatorHost: "localhost", // : "firebase",
+        emulatorHost: "frontned", // : "firebase",
         emulatorPort: 8080, // process.env.NODE_ENV === "development" ? process.env.FIRESTORE_EMULATOR_PORT : undefined,
         ssl: false,
       },

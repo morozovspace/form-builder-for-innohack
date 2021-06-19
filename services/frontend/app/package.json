@@ -26,8 +26,8 @@
     "text-mask-addons": "^3.8.0",
     "uid": "^2.0.0",
     "vuelidate": "^0.7.6",
-    "firebase": "^8.2.1",
-    "firebase-admin": "^9.4.2",
+    "firebase": "^8.6.8",
+    "firebase-admin": "^9.9.0",
     "vuexfire": "^3.2.5",
     "cookie-universal-nuxt": "2.1.4"
   },

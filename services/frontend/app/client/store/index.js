@@ -4,8 +4,9 @@ import { vuexfireMutations, firestoreAction } from "vuexfire"
 export const actions = {
   async nuxtServerInit(
     { state, commit, dispatch },
-    { res, req, redirect, $cookies, $fire }
+    { res, req, redirect, $cookies, $fire, $axios }
   ) {
+
     if (req.headers && req.headers.cookie) {
       if (
         process.env.NODE_ENV === "production" &&

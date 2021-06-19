@@ -5,8 +5,8 @@ export default {
     if (process.browser) return
     try {
       // Binds it on server side then unbind again to avoid memory leaks on the server.
-      await store.dispatch("bindNotes")
-      store.dispatch("unbindNotes")
+      // await store.dispatch("bindNotes")
+      // store.dispatch("unbindNotes")
     } catch (e) {
       return false
     }
