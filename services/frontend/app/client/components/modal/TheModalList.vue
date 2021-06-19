@@ -30,5 +30,5 @@ export default {
   </div>
 </template>
 <style lang="scss">
-@import "@/assets/scss/components/layout/Modal.scss";
+@import "@/assets/styles/components/layout/Modal.scss";
 </style>
