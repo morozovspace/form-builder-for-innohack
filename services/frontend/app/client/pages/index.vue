@@ -5,8 +5,8 @@ export default {
     if (process.browser) return
     try {
       // Binds it on server side then unbind again to avoid memory leaks on the server.
-      // await store.dispatch("bindNotes")
-      // store.dispatch("unbindNotes")
+      await store.dispatch("bindNotes")
+      store.dispatch("unbindNotes")
     } catch (e) {
       return false
     }
@@ -33,7 +33,7 @@ export default {
 </script>
 <template>
   <main class="index-page__wrapper">
-    <h1 @click="addNote">Hellssso from s</h1>
+    <h1 @click="addNote">Hellssso fro s</h1>
     {{ notes }}
   </main>
 </template>

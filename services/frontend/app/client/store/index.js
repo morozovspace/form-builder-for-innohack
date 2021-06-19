@@ -1,4 +1,3 @@
-  
 import { vuexfireMutations, firestoreAction } from "vuexfire"
 
 export const actions = {
@@ -6,7 +5,6 @@ export const actions = {
     { state, commit, dispatch },
     { res, req, redirect, $cookies, $fire, $axios }
   ) {
-
     if (req.headers && req.headers.cookie) {
       if (
         process.env.NODE_ENV === "production" &&
@@ -60,9 +58,17 @@ export const actions = {
     // Save note
   },
   bindNotes: firestoreAction(async function ({ bindFirestoreRef }) {
-    await bindFirestoreRef("notes", this.$fire.firestore.collection("notes"), {
-      wait: true,
-    })
+    try {
+      await bindFirestoreRef(
+        "notes",
+        this.$fire.firestore.collection("notes"),
+        {
+          wait: true,
+        }
+      )
+    } catch (e) {
+      console.log("BIND NOTES", e)
+    }
   }),
   unbindNotes: firestoreAction(function ({ unbindFirestoreRef }) {
     unbindFirestoreRef("notes", false)
