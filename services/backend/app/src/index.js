@@ -7,19 +7,25 @@
  * Use the command below to generate the documentation at project startup:
  * $ npm run start-gendoc
  */
-
+const { initServer } = require('./server')
 const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("../swagger_output.json")
-const express = require("express")
-const app = express()
-
-/* Routes */
-const router = require("./routes")
-
-/* Middlewares */
-app.use(router)
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
-
-app.listen(3000, () => {
-  console.log("Server is running!\nAPI documentation: http://localhost:3000/doc")
-})
+const app = require('./server').getAppInstance()
+async function init () {
+  try {
+    const server = await initServer()
+    app.use(require('./middlewares/firebase'))
+    app.use(require('./middlewares/auth'))
+    // app.use(require('./routes'))
+    app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+    app.use(require('./utils/error').NotFound)
+    app.use(require('./middlewares/error').ErrorHandler)
+    server.listen(3000)
+  } catch (e) {
+    console.log('SERVER ERROR:')
+    console.log(`*** ${e} ***`)
+    app.use(require('./utils/error').InternalServerError)
+    app.use(require('./middlewares/error').ErrorHandler) 
+  }
+}
+init()

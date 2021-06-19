@@ -5,6 +5,7 @@ const authorize = require('../middlewares/auth')
 
 router.route('/test-get').get(authorize, (req, res, next) => {
     // #swagger.description = "Description here..."
+    console.log("HELLO")
     res.status(200).json({
         data: [],
         message: 'Successfully found'

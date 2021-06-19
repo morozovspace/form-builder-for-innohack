@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const authorize = require('../middlewares/auth')
 
 router.post('/signin', (req, res, next) => {
     /* 	#swagger.tags = ['User']

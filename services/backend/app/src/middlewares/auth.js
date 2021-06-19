@@ -1,9 +1,17 @@
+var _ = require('lodash')
+const router = require('express').Router()
 
-module.exports = (req, res, next) => {
+module.exports = async function (req, res, next ) {
     try {
-        // validation...
-        next()
-    } catch (error) {
-        res.status(401).json({ message: "Authentication failed!" })
+        if (
+          _.isFunction(req.isAuthenticated) &&
+          req.isAuthenticated()
+        ) {
+            return next()
+        }
+        return next()
+
+    } catch(e) {
+        return next(e)
     }
 }
