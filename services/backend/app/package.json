@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "npm run generate-docs && npm run dev",
-    "dev": "nodemon src/index.js",
+    "dev": "npm run generate-docs && npm run dev",
+    "start": "nodemon src/index.js",
     "generate-docs": "node swagger.js"
   },
   "dependencies": {

@@ -20,7 +20,7 @@ async function init () {
     app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
     app.use(require('./utils/error').NotFound)
     app.use(require('./middlewares/error').ErrorHandler)
-    server.listen(3000)
+    server.listen(3001)
   } catch (e) {
     console.log('SERVER ERROR:')
     console.log(`*** ${e} ***`)
