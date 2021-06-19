@@ -13,7 +13,7 @@ function mainmenu {
 			docker build  \
 			--tag firebase:auth \
 			--target firebase \
-			-f ./services/firebase/docker/Dockerfile \
+			-f ./services/firebase/Dockerfile \
 			./services/firebase;
 
 			docker run \
