@@ -1,0 +1,146 @@
+  
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+    "source": "functions"
+  },
+  "hosting": [
+    {
+      "site": "morozov-st",
+      "cleanUrls": true,
+      "trailingSlash": false, 
+      "public": "static/public-client",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+          "headers": [{
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }]
+        },
+        {
+          "source": "**/*.@(jpg|jpeg|gif|png)",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }]
+        }, 
+        {
+          "source": "404.html",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=300"
+          }]
+        } 
+      ]
+    },
+    {
+      "site": "admin-morozov-st",
+      "cleanUrls": true,
+      "trailingSlash": false, 
+      "public": "static/admin-client",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+          "headers": [{
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }]
+        },
+        {
+          "source": "**/*.@(jpg|jpeg|gif|png)",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }]
+        }, 
+        {
+          "source": "404.html",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=300"
+          }]
+        } 
+      ]
+    },
+    {
+      "site": "api-morozov-st",
+      "cleanUrls": true,
+      "trailingSlash": false, 
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "api"
+        }
+      ],
+      "headers": [
+        {
+          "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+          "headers": [{
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }]
+        },
+        {
+          "source": "**/*.@(jpg|jpeg|gif|png)",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }]
+        }, 
+        {
+          "source": "404.html",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "max-age=300"
+          }]
+        } 
+      ]
+    }
+  ],
+  "emulators": {
+    "ui": {
+      "host": "0.0.0.0",
+      "enabled": true,
+      "port": 4000
+    },
+    "auth": {
+      "host": "0.0.0.0",
+      "port": 9099
+    },
+    "hosting": {
+      "host": "0.0.0.0",
+      "port": 5000
+    },
+    "functions": {
+      "host": "0.0.0.0",
+      "port": 5001
+    },
+    "firestore": {
+      "host": "0.0.0.0",
+      "port": 8080
+    },
+    "pubsub": {
+      "host": "0.0.0.0",
+      "port": 8085
+    }
+  }
+}
