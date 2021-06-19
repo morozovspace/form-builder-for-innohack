@@ -8,13 +8,13 @@
  * $ npm run start-gendoc
  */
 
-const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('../swagger_output.json')
-const express = require('express')
+const swaggerUi = require("swagger-ui-express")
+const swaggerFile = require("../swagger_output.json")
+const express = require("express")
 const app = express()
 
 /* Routes */
-const router = require('./routes')
+const router = require("./routes")
 
 /* Middlewares */
 app.use(router)
