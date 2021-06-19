@@ -14,6 +14,7 @@ RUN apk update &&\
     apk add --no-cache python make g++ && \
     mkdir /home/$UID/app && \
     chown $UID:$GID /home/$UID/app
+RUN npm install -g nodemon
 WORKDIR /home/$UID/app
 COPY --chown=$UID:$GID ./app/package*.json ./
 USER $UID
