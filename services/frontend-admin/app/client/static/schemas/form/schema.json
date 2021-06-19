@@ -1,0 +1,46 @@
+{
+  "$async": true,
+  "$id": "form/schema.json#",
+  "type": "object",
+  "required": ["id", "fields", "schema"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "step": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "percentage": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "$ref": "defs.json#/definitions/field"
+      }
+    },
+    "schema": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "defs.json#/definitions/schema"
+      }
+    },
+    "dependency": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "defs.json#/definitions/dependency"
+      }
+    }
+  }
+}

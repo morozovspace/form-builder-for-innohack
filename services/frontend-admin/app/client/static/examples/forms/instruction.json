@@ -1,0 +1,315 @@
+{
+  "id": "instructions",
+  "fields": [
+    {
+      "id": "category",
+      "field-type": "select",
+      "label": "instruction.category",
+      "value": "first-category",
+      "validations": "required",
+      "params": {
+        "options": [
+          {
+            "value": "first-category",
+            "label": "instruction.cash-managment"
+          },
+          {
+            "value": "second-category",
+            "label": "instruction.money-account-management"
+          },
+          {
+            "value": "third-category",
+            "label": "other"
+          }
+        ]
+      }
+    },
+    {
+      "id": "type",
+      "field-type": "select",
+      "label": "instruction.type",
+      "value": "",
+      "validations": "required"
+    },
+    {
+      "id": "client",
+      "field-type": "select",
+      "label": "instruction.client",
+      "value": "0",
+      "validations": "required",
+      "params": {
+        "options": [
+          
+          {
+            "value": "0",
+            "label": "Финартель"
+          },
+          {
+            "value": "1",
+            "label": "L3Tech"
+          },
+          {
+            "value": "2",
+            "label": "Харитонов В.Х."
+          },
+          {
+            "value": "3",
+            "label": "Харитонов В.В."
+          },
+          {
+            "value": "4",
+            "label": "Ершов М.В."
+          }
+        ]
+      }
+    },
+    {
+      "id": "amount",
+      "field-type": "input",
+      "label": "instruction.sum",
+      "value": "15",
+      "validations": "required"
+    },
+    {
+      "id": "date",
+      "field-type": "input",
+      "data-type": "date",
+      "label": "Date",
+      "value": "2021-05-11T23:30:39Z",
+      "validations": "required",
+      "params": {
+        "mask": "date"
+      }
+    },
+    {
+      "id": "phone",
+      "field-type": "input",
+      "label": "Phone",
+      "value": "",
+      "validations": [
+        "required"
+      ],
+      "params": {
+        "mask": "phone"
+      }
+    },
+    {
+      "id": "currency",
+      "field-type": "select",
+      "label": "instruction.currency",
+      "value": "RUB",
+      "validations": "required",
+      "params": {
+        "options": [
+          
+          {
+            "value": "RUB",
+            "label": "RUB"
+          },
+          {
+            "value": "USD",
+            "label": "USD"
+          },
+          {
+            "value": "EUR",
+            "label": "EUR"
+          }
+        ]
+      }
+    },
+    {
+      "id": "from",
+      "field-type": "select",
+      "label": "С",
+      "value": "first-account",
+      "validations": "required",
+      "params": {
+        "options": [
+          
+          {
+            "value": "first-account",
+            "label": "Первый счёт"
+          },
+          {
+            "value": "second-account",
+            "label": "Второй счёт"
+          },
+          {
+            "value": "third-account",
+            "label": "Третий счёт"
+          }
+        ]
+      }
+    },
+    {
+      "id": "to",
+      "field-type": "select",
+      "label": "На",
+      "value": "",
+      "validations": "required",
+      "params": {
+        "options": [
+          
+          {
+            "value": "first-account",
+            "label": "Первый счёт"
+          },
+          {
+            "value": "second-account",
+            "label": "Второй счёт"
+          },
+          {
+            "value": "third-account",
+            "label": "Третий счёт"
+          }
+        ]
+      }
+    },
+    {
+      "id": "account",
+      "field-type": "select",
+      "label": "Счет",
+      "value": "first-account",
+      "validations": "required",
+      "params": {
+        "options": [
+          
+          {
+            "value": "first-account",
+            "label": "Банковский 1 счёт"
+          },
+          {
+            "value": "second-account",
+            "label": "Банковский 2 счёт"
+          },
+          {
+            "value": "third-account",
+            "label": "Банковский 3 счёт"
+          }
+        ]
+      }
+    }
+  ],
+  "schema": [
+    [
+      "date",
+      "phone",
+      "category",
+      "type"
+    ]
+  ],
+  "dependency": [
+    {
+      "fieldId": "category",
+      "keys": [
+        {
+          "key": "first-category",
+          "field": {
+            "target": "type",
+            "value": {
+              "value": "third-type",
+              "params": {
+                "options": [
+                  {
+                    "value": "first-type",
+                    "label": "instruction.cash-managment"
+                  },
+                  {
+                    "value": "second-type",
+                    "label": "instruction.withdraw-money"
+                  },
+                  {
+                    "value": "third-type",
+                    "label": "Изменить ПМ"
+                  },
+                  {
+                    "value": "fourth-type",
+                    "label": "Завести на счет"
+                  },
+                  {
+                    "value": "5-type",
+                    "label": "Перевести ПМ"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "key": "second-category",
+          "field": {
+            "target": "type",
+            "value": {
+              "value": "",
+              "params": {
+                "options": [
+                  {
+                    "value": "open-new",
+                    "label": "Открыть новый счет"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "key": "third-category",
+          "field": {
+            "target": "type",
+            "value": {
+              "value": "",
+              "params": {
+                "options": [
+                  {
+                    "value": "proizvolnoe",
+                    "label": "Обращение/Поручение в произвольной форме"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "fieldId": "type",
+      "keys": [
+        {
+          "key": "first-type",
+          "schema": {
+            "target": "type",
+            "value": ["client", "from", "to", "amount", "currency"]
+          }
+        },
+        {
+          "key": "second-type",
+          "schema": {
+            "target": "type",
+            "value": ["client", "from", "to", "amount", "currency"]
+          }
+        },
+        {
+          "key": "third-type",
+          "schema": {
+            "target": "type",
+            "value": ["client", "account", "amount", "currency"]
+          }
+        },
+        {
+          "key": "fourth-type",
+          "schema": {
+            "target": "type",
+            "value": ["client", "to", "amount", "currency"]
+          }
+        },
+        {
+          "key": "5-type",
+          "schema": {
+            "target": "type",
+            "value": ["client", "from", "to", "amount", "currency"]
+          }
+        }
+      ]
+    }
+  ]
+}

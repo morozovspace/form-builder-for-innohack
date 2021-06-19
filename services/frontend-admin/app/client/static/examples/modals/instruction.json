@@ -1,0 +1,69 @@
+{
+  "id": "instruction",
+  "description": "",
+  "form": "https://localhost:5000/db/examples/forms/instruction.json",
+  "controls": [
+    {
+      "id": "cancel",
+      "label": "confirmation.controls.button.cancel",
+      "type": "danger",
+      "visible": true
+    },
+    {
+      "id": "save",
+      "label": "instruction.controls.button.save",
+      "visible": true
+    },
+    {
+      "id": "draft",
+      "label": "instruction.controls.button.draft",
+      "visible": true
+    }
+  ],
+  "dependency": [
+    {
+      "fieldId": "category",
+      "keys": [
+        {
+          "key": "first-category",
+          "label": "{category}: instruction.from {from} instruction.to {to || ''} {amount || ''} in {currency}"
+        },
+        {
+          "key": "second-category",
+          "label": "{category}: from {from} to {to} {amount || ''} in {currency}"
+        }
+      ],
+      "default": {
+        "label": ""
+      }
+    },
+    {
+      "fieldId": "type",
+      "keys": [
+        {
+          "key": "first-type",
+          "label": "{type}: from {from} to {to} {amount} {currency}"
+        },
+        {
+          "key": "second-type",
+          "label": "{type}: from {from} to {to} {amount || ''} {currency}"
+        },
+        {
+          "key": "third-type",
+          "label": "{type}: {amount} in {currency || 'test.value'}"
+        },
+        {
+          "key": "fourth-type",
+          "label": "{type} {amount} {currency}"
+        },
+        {
+          "key": "5-type",
+          "label": "{type}: instruction.from {from} instruction.to {amount} {currency}"
+        }
+      ],
+      "default": {
+        "label": ""
+      }
+    }
+  ]
+}
