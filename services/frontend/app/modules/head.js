@@ -1,5 +1,5 @@
 export default { 
-  title: process.env.PWA_OG_TITLE,
+  title: "Frontend",
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
