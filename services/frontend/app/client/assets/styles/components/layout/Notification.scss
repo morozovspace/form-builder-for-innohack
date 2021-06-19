@@ -1,0 +1,52 @@
+.notification{
+  &__wrapper {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    right: 30px;
+    bottom: 40px;
+  }
+  &__base {
+    padding: 13px 15px;
+    border: 1px solid black;
+    background: $white;
+    &:nth-child(n+2) {
+      margin-top: 20px; 
+    }
+  }
+  &_display {
+    display: block;
+  }
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  max-width: 500px;
+  width: 90%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  height: 21px;
+  line-height: 21px;
+  float: right;
+  background: transparent;
+  transition-duration: .2s;
+  &:hover {
+    color: $red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &:focus {
+    color: $red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

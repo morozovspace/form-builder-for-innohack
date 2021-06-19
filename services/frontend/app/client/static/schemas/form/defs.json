@@ -1,0 +1,203 @@
+{
+  "$id": "form/defs.json",
+  "additionalProperties": false,
+  "definitions": {
+    "key": {
+      "$async": true,
+      "type": "object",
+      "required": ["key"],
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "field-type": {
+                  "type": "string",
+                  "minLength": 1,
+                  "enum": ["input", "radio", "checkbox", "switch", "select", "range"]
+                },
+                "data-type": {
+                  "type": "string",
+                  "minLength": 1,
+                  "enum": ["date"],
+                  "changeData": true
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "type": ["string","number","array", "boolean"]
+                },
+                "validations": {
+                  "type": ["array", "string", "object"],
+                  "if": {"type": ["string", "object"]},
+                  "then": {
+                    "$ref": "#/definitions/validation"
+                  },
+                  "items": {
+                    "$ref": "#/definitions/validation"
+                  }
+                },
+                "params": {
+                  "type": "object",
+                  "default": {},
+                   "properties": {
+                     "suggestion": {
+                       "type": ["string", "boolean"],
+                       "default": false
+                     }
+                   }
+                }
+              }
+            }
+          }
+        },
+        "schema": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "type": "array",
+              "default": [],
+              "items": {
+                "type": ["string", "object"],
+                "if": {
+                  "minLength": 1,
+                  "isAllias": true
+                },
+                "then": {
+                  "fieldFromAllias": true
+                },
+                "else": {
+                  "$ref": "defs.json#/definitions/field"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "dependency": {
+      "$async": true,
+      "type": "object",
+      "required": ["fieldId"],
+      "properties": {
+        "fieldId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "keys": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "$ref": "defs.json#/definitions/key"
+          }
+        }
+      }
+    },
+    "schema": {
+      "$async": true,
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": ["string", "object"],
+        "if": {
+          "minLength": 1,
+          "isAllias": true
+        },
+        "then": {
+          "fieldFromAllias": true
+        },
+        "else": {
+          "$ref": "defs.json#/definitions/field"
+        }
+      }
+    },
+    "field": {
+      "$async": true,
+      "type": "object",
+      "required": [
+        "id",
+        "field-type",
+        "label",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "field-type": {
+          "type": "string",
+          "minLength": 1,
+          "enum": ["input", "radio", "checkbox", "switch", "select", "range"]
+        },
+        "data-type": {
+          "type": "string",
+          "minLength": 1,
+          "enum": ["date"],
+          "changeData": true
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": ["string","number","array", "boolean"]
+        },
+        "validations": {
+          "type": ["array", "string", "object"],
+          "if": {"type": ["string", "object"]},
+          "then": {
+            "$ref": "#/definitions/validation"
+          },
+          "items": {
+            "$ref": "#/definitions/validation"
+          },
+          "default": []
+        },
+        "params": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "suggestion": {
+              "type": ["string", "boolean"],
+              "default": false
+            }
+          }
+        }
+      }
+    },
+    "validation": {
+      "$async": true,
+      "type": ["string", "object"],
+      "modifyValidation": true,
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payload": {
+          "type": ["object", "boolean"],
+          "default": false
+        }
+      }
+    }
+  }
+}

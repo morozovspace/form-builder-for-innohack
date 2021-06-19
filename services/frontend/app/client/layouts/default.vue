@@ -1,10 +1,18 @@
 <script>
 import { mapState } from "vuex"
+import Header from "@/components/layout/Header"
+import Navigation from "@/components/layout/Navigation"
+import TheModalList from "@/components/modal/TheModalList"
+const moment = require("moment")
 export default {
-  data() {
-    return {
-      darkMode: false,
-    }
+  name: "App",
+  components: {
+    Header,
+    Navigation,
+    TheModalList,
+  },
+  created() {
+    moment.locale(this.$i18n.locale)
   },
   computed: {
     ...mapState({
@@ -14,18 +22,15 @@ export default {
 }
 </script>
 <template>
-  <div :class="[`theme-${theme}`]">
-    <div :class="['page__wrapper']">
-      <div :class="['header-and-page__wrapper']">
-        <Header />
-        <Nuxt />
-      </div>
-      <Footer />
-    </div>
+  <div :class="['layout__wrapper', `theme-${theme}`]">
+    <Header class="layout__header" />
+    <Navigation class="layout__sidebar" />
+    <section class="layout__content">
+      <Nuxt class="layout__page" />
+      <TheModalList />
+    </section>
   </div>
 </template>
-<!--
 <style lang="scss">
 @import "@/assets/styles/layouts/default.scss";
 </style>
--->
