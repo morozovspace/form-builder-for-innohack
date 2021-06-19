@@ -6,12 +6,19 @@ export default {
       projectId: "fb-form-builder",
       storageBucket: "fb-form-builder.appspot.com",
       messagingSenderId: "792700851513",
-      appId: "1:792700851513:web:5756a17e4f44e0f116c4e8",
-      measurementId: "G-9007BVW8K1"
+      appId: "1:792700851513:web:848695ff6e9d0bb716c4e8",
+      measurementId: "G-8Q40T5NE97"
     },
     onFirebaseHosting: process.env.NODE_ENV === "production",
     services: {
-      auth: false,
+      auth: {
+        initialize: {
+          onAuthStateChangedAction: "auth/onAuthStateChanged",
+        },
+        ssr: false,
+        emulatorPort: 9099, // process.env.NODE_ENV === "development" ? process.env.AUTH_EMULATOR_PORT : undefined,
+        disableEmulatorWarnings: true,
+      },
       firestore: {
         memoryOnly: false,
         emulatorHost: process.browser ? "frontend" : "localhost",

@@ -1,14 +1,10 @@
 <script>
 import { mapState } from "vuex"
-import Header from "@/components/layout/Header"
-import Navigation from "@/components/layout/Navigation"
 import TheModalList from "@/components/modal/TheModalList"
 const moment = require("moment")
 export default {
   name: "App",
   components: {
-    Header,
-    Navigation,
     TheModalList,
   },
   created() {
@@ -23,8 +19,6 @@ export default {
 </script>
 <template>
   <div :class="['layout__wrapper', `theme-${theme}`]">
-    <Header class="layout__header" />
-    <Navigation class="layout__sidebar" />
     <section class="layout__content">
       <Nuxt class="layout__page" />
       <TheModalList />

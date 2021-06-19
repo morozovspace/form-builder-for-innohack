@@ -41,10 +41,10 @@ services:
     volumes:
       - $PWD/services/frontend/app/client:/home/node/app/client
     # entrypoint: ["npm","run","dev"]
-  backend:
-    container_name: backend
+  frontend-admin:
+    container_name: frontend-admin
     build:
-      context: $PWD/services/backend
+      context: $PWD/services/frontend
       dockerfile: ./Dockerfile
     ports: 
       - 3001:3001 # Frontend app
@@ -52,8 +52,23 @@ services:
       - frontend
     restart: "no"
     volumes:
-      - $PWD/services/backend/app/src:/home/node/app/client
+      - $PWD/services/frontend-admin/app/client:/home/node/app/client
     # entrypoint: ["npm","run","dev"]
+  #
+  #backend:
+  #  container_name: backend
+  #  build:
+  #    context: $PWD/services/backend
+  #    dockerfile: ./Dockerfile
+  #  ports: 
+  #    - 3010:3010 # Frontend app
+  #  networks:
+  #    - frontend
+  #  restart: "no"
+  #  volumes:
+  #    - $PWD/services/backend/app/src:/home/node/app/client
+  #  # entrypoint: ["npm","run","dev"]
+  
 networks:
   frontend:
     # use the bridge driver, but enable IPv6

@@ -11,23 +11,14 @@ export default {
     },
     onFirebaseHosting: process.env.NODE_ENV === "production",
     services: {
-      auth: {
-        initialize: {
-          onAuthStateChangedAction: "auth/onAuthStateChanged",
-        },
-        ssr: true,
-        emulatorPort: 9099, // process.env.NODE_ENV === "development" ? process.env.AUTH_EMULATOR_PORT : undefined,
-        disableEmulatorWarnings: true,
-      },
+      auth: false,
       firestore: {
         memoryOnly: false,
         emulatorHost: process.browser ? "frontend" : "localhost",
         emulatorPort: 8080, // process.env.NODE_ENV === "development" ? process.env.FIRESTORE_EMULATOR_PORT : undefined,
         ssl: false,
       },
-      functions: {
-        emulatorPort: 5001,// process.env.NODE_ENV === "development" ? process.env.FUNCTIONS_EMULATOR_PORT : undefined,
-      },
+      functions: false,
       storage: true,
       performance: true,
       analytics: true,
