@@ -6,7 +6,7 @@ ENV GID=$group
 ENV NPM_CONFIG_PREFIX /home/$UID/.npm-global
 ENV PATH $PATH:/home/$UID/.npm-global/bin
 LABEL authors="morozov.space@mail.ru" \
-      source="https://gitlab.com/reverse.studio/docker-firebase-nuxt-template" \
+      source="https://github.com/morozovspace/form-builder-for-innohack" \
       description="Dockerized nuxt js app"
 USER root 
 RUN apk update &&\
