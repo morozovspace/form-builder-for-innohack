@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: $PWD/services/frontend
+      dockerfile: ./Dockerfile
+    ports: 
+      - 3000:3000
+    networks:
+      - frontend
+    restart: "no"
+    volumes:
+      - $PWD/services/frontend/app/client:/home/node/app/client
+    entrypoint: ["npm","run","unit"]
+networks:
+  frontend:
+    # use the bridge driver, but enable IPv6
+    driver: bridge
+    ipam:
+      driver: default

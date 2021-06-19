@@ -9,7 +9,7 @@
   },
   "hosting": [
     {
-      "site": "morozov-st",
+      "site": "fb-form-builder",
       "cleanUrls": true,
       "trailingSlash": false, 
       "public": "static/public-client",
@@ -43,41 +43,7 @@
       ]
     },
     {
-      "site": "admin-morozov-st",
-      "cleanUrls": true,
-      "trailingSlash": false, 
-      "public": "static/admin-client",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "headers": [
-        {
-          "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
-          "headers": [{
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
-          }]
-        },
-        {
-          "source": "**/*.@(jpg|jpeg|gif|png)",
-          "headers": [{
-            "key": "Cache-Control",
-            "value": "max-age=7200"
-          }]
-        }, 
-        {
-          "source": "404.html",
-          "headers": [{
-            "key": "Cache-Control",
-            "value": "max-age=300"
-          }]
-        } 
-      ]
-    },
-    {
-      "site": "api-morozov-st",
+      "site": "api-fb-form-builder",
       "cleanUrls": true,
       "trailingSlash": false, 
       "ignore": [

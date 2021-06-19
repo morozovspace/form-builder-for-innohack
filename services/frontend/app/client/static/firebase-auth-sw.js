@@ -6,10 +6,12 @@ importScripts(
 importScripts(
   'https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js'
 )
-firebase.initializeApp({"apiKey":"AIzaSyDMMRld6GJFBfBJVBaUjCnnBMV-ckeAs-o","authDomain":"http:\u002F\u002Flocalhost:9099","projectId":"morozov-st","storageBucket":"morozov-st.appspot.com","messagingSenderId":"925528804050","appId":"1:925528804050:web:4ad6713351c83d46efbb0b","measurementId":"G-370FZTMJEM"})
+firebase.initializeApp({"apiKey":"AIzaSyBoQumd6X4SUN0AY4AsAl8PlJU0XG8ks8o","authDomain":"fb-form-builder.firebaseapp.com","projectId":"fb-form-builder","storageBucket":"fb-form-builder.appspot.com","messagingSenderId":"792700851513","appId":"1:792700851513:web:5756a17e4f44e0f116c4e8","measurementId":"G-9007BVW8K1"})
 
 // Initialize authService
 const authService = firebase.auth()
+
+authService.useEmulator('http://localhost:9099')
 
 /**
  * Returns a promise that resolves with an ID token if available.
@@ -74,7 +76,14 @@ self.addEventListener('fetch', (event) => {
 
   // https://github.com/nuxt-community/firebase-module/issues/465
   if (!expectsHTML || !isSameOrigin || !isHttps || isIgnored) {
-      event.respondWith(fetch(event.request))
+    if (event.request.url.startsWith('https://www.googleapis.com/identitytoolkit/')) {
+      event.respondWith(
+        fetch({
+          ...event.request,
+          ...{ url: event.request.url.replace(/https:\/\//, 'http://localhost:9099/') }
+        })
+      )
+    } else event.respondWith(fetch(event.request))
 
     return
   }

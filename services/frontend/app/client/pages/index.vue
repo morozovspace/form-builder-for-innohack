@@ -33,7 +33,7 @@ export default {
 </script>
 <template>
   <main class="index-page__wrapper">
-    <h1 @click="addNote">Hello from index</h1>
+    <h1 @click="addNote">Hellssso from s</h1>
     {{ notes }}
   </main>
 </template>
