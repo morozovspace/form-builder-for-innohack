@@ -1,0 +1,56 @@
+{
+  "id": "signin",
+  "fields": [
+    {
+      "id": "Surname",
+      "label": "Surname",
+      "field-type": "input",
+      "value": "",
+      "validations": ["required", "alpha", { "id": "maxLength", "payload": "30" }]
+    },
+    {
+      "id": "Name",
+      "label": "Name",
+      "field-type": "input",
+      "value": "",
+      "validations": ["required", "alpha", { "id": "maxLength", "payload": "30" }]
+    },
+    {
+      "id": "Patronymic",
+      "field-type": "input",
+      "label": "Patronymic",
+      "value": "",
+      "validations": ["required", "alpha", { "id": "maxLength", "payload": "30" }]
+    },
+    {
+      "id": "Location",
+      "label": "Location",
+      "field-type": "input",
+      "value": "",
+      "validations": ["required", "alpha", { "id": "maxLength", "payload": "255" }],
+      "params": {
+        "options": [],
+        "suggestion": true
+      }
+    },
+    {
+      "id": "Date",
+      "label": "Date",
+      "field-type": "select",
+      "value": "",
+      "validations": ["required", "alpha", { "id": "maxLength", "payload": "255" }],
+      "params": {
+        "options": []
+      }
+    }
+  ],
+  "schema": [
+    [
+      "Surname",
+      "Name",
+      "Patronymic",
+      "Location",
+      "Date"
+    ]
+  ]
+}

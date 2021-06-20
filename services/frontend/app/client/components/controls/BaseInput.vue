@@ -21,7 +21,7 @@ export default {
     clearable
   >
     <template slot="prepend" v-if="prepend">
-      {{ prepend }}
+      {{ prepend }} {{ showSuggestion }}
       <i v-if="prependIcon" :class="prependIcon"></i>
     </template>
   </el-autocomplete>
@@ -41,7 +41,7 @@ export default {
     clearable
   >
     <template slot="prepend" v-if="prepend">
-      {{ prepend }}
+      {{ prepend }} {{ showSuggestion }}
       <i v-if="prependIcon" :class="prependIcon"></i>
     </template>
   </el-input>

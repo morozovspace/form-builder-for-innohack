@@ -1,0 +1,61 @@
+{
+  "id": "signin",
+  "fields": [
+    {
+      "id": "email",
+      "label": "Email",
+      "field-type": "input",
+      "value": "",
+      "validations": ["required", "email"]
+    },
+    {
+      "id": "country",
+      "field-type": "input",
+      "label": "Country",
+      "value": "",
+      "validations": "required"
+    },
+    {
+      "id": "city",
+      "field-type": "input",
+      "label": "City",
+      "value": "",
+      "validations": "required"
+    },
+    {
+      "id": "age",
+      "field-type": "input",
+      "label": "Age",
+      "value": "",
+      "validations": ["required", "numeric", { "id": "minValue", "payload": "18" }]
+    },
+    {
+      "id": "gender",
+      "field-type": "select",
+      "label": "Gender",
+      "value": "",
+      "validations": ["required"],
+      "params": {
+        "options": [
+          {
+            "label": "Male",
+            "value": "Male"
+          },
+          {
+            "label": "Female",
+            "value": "Female"
+          }
+        ]
+      }
+    }
+  ],
+  "schema": [
+    [
+      "email",
+      "country",
+      "city",
+      "age",
+      "gender"
+    ]
+  ]
+}

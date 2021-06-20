@@ -46,14 +46,7 @@ export default {
   },
   methods: {
     async querySearch(qs, cb) {
-      const { suggestions } = await this.$dadata.$post(
-        `/${this.suggestion}`,
-        JSON.stringify({
-          query: qs,
-          language: this.$i18n.locale,
-          count: 5,
-        })
-      )
+      const suggestions = await this.$axios.$post("public/calc")
       this.$emit("get-suggestions", this.id, suggestions)
       cb(suggestions)
     },

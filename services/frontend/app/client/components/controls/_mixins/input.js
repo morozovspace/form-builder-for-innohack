@@ -1,4 +1,5 @@
 const lang = require("lodash/lang")
+const object = require("lodash/object")
 export default {
   props: {
     type: {
@@ -39,23 +40,22 @@ export default {
   computed: {
     showSuggestion() {
       if (lang.isBoolean(this.suggestion) && this.suggestion) {
-        return false
+        return true
       }
       return this.suggestion
     },
   },
   methods: {
     async querySearch(qs, cb) {
-      const { suggestions } = await this.$dadata.$post(
-        `/${this.suggestion}`,
-        JSON.stringify({
-          query: qs,
-          language: this.$i18n.locale,
-          count: 5,
-        })
-      )
-      this.$emit("get-suggestions", this.id, suggestions)
-      cb(suggestions)
+      const res = await this.$axios.$get("/public/calc")
+      const data = {
+        params: {
+          options: [],
+        },
+      }
+      object.merge(data, res)
+      this.$emit("get-suggestions", this.id, data)
+      cb(data.params.options)
     },
     select(value) {
       this.$emit("select-suggestion", this.id, value)

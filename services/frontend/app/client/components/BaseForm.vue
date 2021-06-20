@@ -248,8 +248,9 @@ export default {
     async selectSuggestion(id, suggestion) {
       this.$emit("select-suggestion", id, suggestion)
       const filter = this.fields.filter(
-        (f) => f.params.suggestion && object.has(suggestion.data, f.id)
+        (f) => f.params.suggestion && object.has(suggestion.value, f.id)
       )
+      console.log("UPDATE", suggestion, filter)
       for (const field of filter) {
         await this.updateField(field.id, { masked: suggestion.data[field.id] })
       }

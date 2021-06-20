@@ -247,11 +247,21 @@ export default {
     },
     async selectSuggestion(id, suggestion) {
       this.$emit("select-suggestion", id, suggestion)
+      console.log("SELECT SUGG", suggestion)
       const filter = this.fields.filter(
         (f) => f.params.suggestion && object.has(suggestion.data, f.id)
       )
       for (const field of filter) {
-        await this.updateField(field.id, { masked: suggestion.data[field.id] })
+        await this.updateField(field.id,
+          { 
+            masked: suggestion.data[field.id],
+            options: [
+              {
+                label: "TEst",
+                value: "Test",
+              }
+            ]
+          })
       }
     },
   },
