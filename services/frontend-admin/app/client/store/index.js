@@ -1,6 +1,6 @@
 import { vuexfireMutations, firestoreAction } from "vuexfire"
 // import createConfig from "@/static/modals/createForm.json"
-// const lang = require("lodash/lang")
+const lang = require("lodash/lang")
 export const actions = {
   async nuxtServerInit(
     { state, commit, dispatch },
@@ -73,6 +73,22 @@ export const actions = {
   unbindForms: firestoreAction(function ({ unbindFirestoreRef }) {
     unbindFirestoreRef("forms", false)
   }),
+  bindForm: firestoreAction(async function ({ bindFirestoreRef }, id) {
+    try {
+      await bindFirestoreRef(
+        "form",
+        this.$fire.firestore.collection("forms").doc(lang.cloneDeep(id)),
+        {
+          wait: true,
+        }
+      )
+    } catch (e) {
+      console.log("BIND NOTES", e)
+    }
+  }),
+  unbindForm: firestoreAction(function ({ unbindFirestoreRef }) {
+    unbindFirestoreRef("form", false)
+  }),
 }
 
 export const mutations = {
@@ -88,5 +104,7 @@ export const mutations = {
 
 export const state = () => ({
   theme: "dark",
+  countDocument: 0,
   forms: [],
+  form: {},
 })
