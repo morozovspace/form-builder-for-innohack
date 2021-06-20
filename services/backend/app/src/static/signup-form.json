@@ -1,119 +1,62 @@
 {
-    "fields": [
-      {
-        "id": "data-type",
-        "field-type": "select",
-        "label": "Select mask and default value",
-        "value": "address",
-        "validations": "required",
-        "params": {
-          "options": [
-            {
-              "value": "date",
-              "label": "Date"
-            },
-            {
-              "value": "phone",
-              "label": "Phone"
-            },
-            {
-              "value": "email",
-              "label": "Email"
-            },
-            {
-              "value": "address",
-              "label": "Address"
-            }
-          ]
+  "fields": [
+    {
+      "id": "name",
+      "label": "Name",
+      "field-type": "input",
+      "value": "",
+      "validations": [
+        "required",
+        {
+          "id": "minLength",
+          "payload": "10"
         }
-      },
-      {
-        "id": "data",
-        "field-type": "input",
-        "label": "Data",
-        "value": "",
-        "validations": "required"
-      },
-      {
-        "id": "city",
-        "field-type": "input",
-        "label": "City",
-        "value": "",
-        "validations": "required",
-        "params": {
-          "suggestion": true
-        }
-      }
-    ],
-    "schema": [
-      [
-        "data-type",
-        "data",
-        "city"
-      ],
-      [
-        
       ]
-    ],
-    "dependency": [
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "field-type": "input",
+      "value": "",
+      "validations": ["required", "email"]
+    },
+    {
+      "id": "password",
+      "field-type": "input",
+      "label": "Password",
+      "value": "",
+      "validations": ["required"]
+    }
+  ],
+  "schema": [
+    [
+      "email",
+      "name",
       {
-        "fieldId": "data-type",
-        "keys": [
+        "id": "password1",
+        "from": "password",
+        "validations": [
+          "required",
           {
-            "key": "date",
-            "field": {
-              "target": "data",
-              "value": {
-                "value": "2021-05-11T10:30:39Z",
-                "data-type": "date",
-                "validations": ["required"],
-                "params": {
-                  "mask": "date"
-                }
-              }
-            }
-          },
+            "id": "sameAs",
+            "payload": "password2"
+          }
+        ],
+        "params": {
+          "type": "password"
+        }
+      },
+      {
+        "id": "password2",
+        "from": "password",
+        "validations": [
+          "required",
           {
-            "key": "phone",
-            "field": {
-              "target": "data",
-              "value": {
-                "value": "+79291103614",
-                "validations": ["required"],
-                "params": {
-                  "mask": "phone"
-                }
-              }
-            }
-          },
-          {
-            "key": "email",
-            "field": {
-              "target": "data",
-              "value": {
-                "value": "test@ffin.ru",
-                "validations": ["required", "email"],
-                "params": {
-                  "mask": "email"
-                }
-              }
-            }
-          },
-          {
-            "key": "address",
-            "field": {
-              "target": "data",
-              "value": {
-                "value": "Москва",
-                "validations": ["required"],
-                "params": {
-                  "suggestion": "address"
-                }
-              }
-            }
+            "id": "sameAs",
+            "payload": "password1"
           }
         ]
       }
     ]
-  }
-  
+  ]
+}

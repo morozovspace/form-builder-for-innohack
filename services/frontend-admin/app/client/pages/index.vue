@@ -1,3 +1,4 @@
+<!--
 <script>
 import { mapState, mapActions } from "vuex"
 export default {
@@ -32,7 +33,9 @@ export default {
 }
 </script>
 <template>
-  <main class="index-page__wrapper">
-    <nuxt-link route="/signin">a</nuxt-link>
-  </main>
+  <main class="index-page__wrapper">Test</main>
+</template>
+-->
+<template>
+  <main class="index-page__wrapper">Test</main>
 </template>

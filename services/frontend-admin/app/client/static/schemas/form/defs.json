@@ -194,8 +194,8 @@
           "minLength": 1
         },
         "payload": {
-          "type": ["object", "boolean"],
-          "default": false
+          "type": ["object", "string","boolean"],
+          "default": null
         }
       }
     }

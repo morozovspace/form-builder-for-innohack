@@ -17,7 +17,7 @@ router.get('/signin-form', (req, res, next) => {
             "apiKeyAuth": []
     }] */
     res.json({
-      id: "signIn",
+      id: "auth",
       ...signInForm,
     })
 })
@@ -36,7 +36,7 @@ router.get('/signup-form', (req, res, next) => {
             "apiKeyAuth": []
     }] */
     res.json({
-      id: "signUp",
+      id: "auth",
       ...signUpForm,
     })
 })
