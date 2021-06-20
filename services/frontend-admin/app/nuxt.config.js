@@ -18,7 +18,7 @@ export default {
     }
   },
   target: "server",
-  ssr: true,
+  ssr: false,
   srcDir: "client",
   router: {
     base: "/"
