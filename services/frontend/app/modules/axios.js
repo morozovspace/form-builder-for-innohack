@@ -1,4 +1,4 @@
 export default {
-  baseURL: process.env.API_URL,
+  baseURL: "http://localhost:3010",
   credentials: true,
 }

@@ -1,23 +1,18 @@
-/*
- * Run the project and access the documentation at: http://localhost:3000/doc
- *
- * Use the command below to generate the documentation without starting the project:
- * $ npm start
- *
- * Use the command below to generate the documentation at project startup:
- * $ npm run start-gendoc
- */
+const admin = require('firebase-admin')
 const { initServer } = require('./server')
 const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("../swagger_output.json")
 const app = require('./server').getAppInstance()
+const credentionals = require("../credentionals.json")
 async function init () {
   try {
-    console.log("HELLO")
+    admin.initializeApp({
+      credential: admin.credential.cert(credentionals),
+      databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+    })
     const server = await initServer()
     app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
-    app.use(require('./middlewares/firebase'))
-    // app.use(require('./middlewares/auth'))
+    app.use(require('./middlewares/auth'))
     // app.use(require('./routes'))
     app.use(require('./utils/error').NotFound)
     app.use(require('./middlewares/error').ErrorHandler)

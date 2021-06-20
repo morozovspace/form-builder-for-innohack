@@ -28,12 +28,19 @@ export default {
     ...mapActions({
       addNote: "addNote",
     }),
+    async sendReq() {
+      try {
+        const res = await this.$axios.$get("/create")
+        console.log(res)
+      } catch (e) {
+        console.log("E", e)
+      }
+    },
   },
 }
 </script>
 <template>
   <main class="index-page__wrapper">
-    <h1 @click="addNote">Hellssso fro s</h1>
-    {{ notes }}
+    <button @click="sendReq">Create</button>
   </main>
 </template>

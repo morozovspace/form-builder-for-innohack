@@ -23,6 +23,7 @@ npm-debug.log
 dist
 .DS_Store
 node_modules/
+package-lock.json
 /dist
 # Log files
 npm-debug.log*
@@ -93,3 +94,5 @@ copy
 
 # ignore firebase seed
 services/firebase/app/seed
+#
+services/backend/app/credentionals.json

@@ -1,3 +1,3 @@
 export default {
-    SECRET: process.env.SECRET || "MY CUSTOM SECRET"
+    AXIOS: process.env.API_URL || "http://localhost:3010"
 }

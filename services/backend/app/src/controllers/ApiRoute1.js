@@ -1,7 +1,8 @@
 const express = require('express')
+const admin = require('firebase-admin')
 const router = express.Router()
 
-router.post('/signin', (req, res, next) => {
+router.get('/create', (req, res, next) => {
     /* 	#swagger.tags = ['User']
         #swagger.description = 'Endpoint to sign in a specific user' */
 
@@ -15,10 +16,22 @@ router.post('/signin', (req, res, next) => {
     /* #swagger.security = [{
             "apiKeyAuth": []
     }] */
-    res.status(201).json({
-        data: [],
-        message: 'Authentication successed'
-    })
+    try {
+      console.log("HELLO")
+      const userRecord = await admin
+        .auth()
+        .createUser({
+          email: 'user@example.com',
+          emailVerified: false,
+          phoneNumber: '+11234567890',
+          password: 'secretPassword',
+          displayName: 'John Doe',
+          photoURL: 'http://www.example.com/12345678/photo.png',
+          disabled: false,
+        })
+      } catch(e) {
+          return next(e)
+      }
 })
 
 router.route('/users/:id').get(authorize, (req, res) => {
