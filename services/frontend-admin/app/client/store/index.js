@@ -1,5 +1,6 @@
 import { vuexfireMutations, firestoreAction } from "vuexfire"
-
+// import createConfig from "@/static/modals/createForm.json"
+// const lang = require("lodash/lang")
 export const actions = {
   async nuxtServerInit(
     { state, commit, dispatch },
@@ -37,19 +38,18 @@ export const actions = {
       ? commit("SET_THEME", "dark")
       : commit("SET_THEME", "light")
   },
-  addNote: firestoreAction(async function (context, payload) {
-    console.log("ADD NOTE")
+  addForm: firestoreAction(async function ({ dispatch }, payload) {
     try {
-      const h = this.$fire.firestore.collection("notes").add({ text: "text" })
-      h.then((res) => {
-        console.log("RESPOSNE")
-        console.log(res)
-      }).catch((e) => {
-        console.log(e)
-      })
+      const data = {
+        label: "Test label",
+        description: "Test description",
+      }
+      await this.$fire.firestore.collection("forms").add(data)
+      /*
       await this.$fire.firestore
-        .collection("notes")
+        .collection("forms")
         .add(JSON.parse(JSON.stringify({ test: "Text" })))
+        */
     } catch (e) {
       console.log(Object.keys(e))
     }
@@ -57,11 +57,11 @@ export const actions = {
   saveNote({ state }, { name, text }) {
     // Save note
   },
-  bindNotes: firestoreAction(async function ({ bindFirestoreRef }) {
+  bindForms: firestoreAction(async function ({ bindFirestoreRef }) {
     try {
       await bindFirestoreRef(
-        "notes",
-        this.$fire.firestore.collection("notes"),
+        "forms",
+        this.$fire.firestore.collection("forms"),
         {
           wait: true,
         }
@@ -70,8 +70,8 @@ export const actions = {
       console.log("BIND NOTES", e)
     }
   }),
-  unbindNotes: firestoreAction(function ({ unbindFirestoreRef }) {
-    unbindFirestoreRef("notes", false)
+  unbindForms: firestoreAction(function ({ unbindFirestoreRef }) {
+    unbindFirestoreRef("forms", false)
   }),
 }
 
@@ -88,5 +88,5 @@ export const mutations = {
 
 export const state = () => ({
   theme: "dark",
-  notes: [],
+  forms: [],
 })

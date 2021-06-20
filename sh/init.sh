@@ -33,6 +33,7 @@ function mainmenu {
 			array=( $logs )
 			echo "FIREBASE_TOKEN=${array[0]}" >> firebase.env
 			echo "FIREBASE_AUTH_EMULATOR_HOST=localhost:9099" >> backend.env
+			echo "FIRESTORE_EMULATOR_HOST=localhost:8080" >> backend.env
 			docker container stop firebase-tools
 			docker container rm firebase-tools
 			docker image rm firebase:auth

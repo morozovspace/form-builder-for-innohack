@@ -9,7 +9,12 @@ async function init () {
   try {
     admin.initializeApp({
       credential: admin.credential.cert(credentionals),
-      databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+      projectId: "fb-form-builder"
+    })
+    const db = admin.firestore()
+    app.use((req, res, next) => {
+      req.db = db
+      return next()
     })
     const server = await initServer()
     app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))

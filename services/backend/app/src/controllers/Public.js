@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const createError = require('http-errors')
 const signInForm = require("../static/signin-form.json")
 const signUpForm = require("../static/signup-form.json")
-router.get('/signin-form', (req, res, next) => {
+const lang = require("lodash/lang")
+router.get('/form/:id', (req, res, next) => {
     /* 	#swagger.tags = ['User']
         #swagger.description = 'Endpoint to sign in a specific user' */
 
@@ -16,12 +18,17 @@ router.get('/signin-form', (req, res, next) => {
     /* #swagger.security = [{
             "apiKeyAuth": []
     }] */
-    res.json({
-      id: "auth",
-      ...signInForm,
-    })
+    const id = req.params.id // Проверить чтобы был строкой или чилсом
+    console.log("IDDD", id, lang.isString(id))
+    if (lang.isString(id) || lang.isNumber(id)) {
+      console.log("ID", id)
+      // Запросить таблицу из базы данных
+      return res.json(signInForm)
+    }
+    return next(createError.Unauthorized('Unauthorized'))
 })
-router.get('/signup-form', (req, res, next) => {
+
+router.post('/form/:id/update', (req, res, next) => {
     /* 	#swagger.tags = ['User']
         #swagger.description = 'Endpoint to sign in a specific user' */
 
@@ -35,6 +42,7 @@ router.get('/signup-form', (req, res, next) => {
     /* #swagger.security = [{
             "apiKeyAuth": []
     }] */
+    console.log("Обновление формы - получение артефактов после обнвления")
     res.json({
       id: "auth",
       ...signUpForm,

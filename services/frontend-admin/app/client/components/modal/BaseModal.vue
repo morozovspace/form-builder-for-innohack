@@ -31,7 +31,7 @@ export default {
       required: true,
     },
     form: {
-      type: String,
+      type: [String, Object],
       default: "",
     },
     promises: {

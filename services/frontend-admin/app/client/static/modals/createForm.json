@@ -1,0 +1,39 @@
+{
+    "id": "confirm",
+    "label": "Создание формы",
+    "description": "Настройки формы",
+    "form": {
+            "id": "sandbox-form",
+            "fields": [
+              {
+                "id": "config",
+                "field-type": "input",
+                "label": "Config",
+                "value": "https://localhost:5000/db/examples/forms/test.json",
+                "validations": "required",
+                "params": {
+                  "type": "textarea"
+                }
+              }
+            ],
+            "schema": [
+              [
+                "config"
+              ]
+            ]          
+    },
+    "controls": [
+      {
+        "id": "cancel",
+        "label": "confirmation.controls.button.cancel",
+        "type": "danger",
+        "visible": true,
+        "timeout": 10000
+      },
+      {
+        "id": "confirm",
+        "label": "confirmation.controls.button.confirm",
+        "visible": true
+      }
+    ]
+  }

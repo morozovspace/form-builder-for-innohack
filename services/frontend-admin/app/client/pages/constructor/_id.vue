@@ -1,3 +1,3 @@
 <template>
-  <div></div>
+  <div>Edit form</div>
 </template>

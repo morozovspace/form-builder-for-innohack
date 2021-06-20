@@ -18,3 +18,22 @@ body {
     }
   }
 }
+.forms__wrapper {
+  margin-top: 40px;
+}
+.forms__form-wrapper {
+  background: $grey;
+  height: 50px;
+  margin-top: 10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    &:hover {
+      background: cornsilk;
+    }
+}
+.index-page__wrapper {
+  width: 60%;
+}

@@ -24,6 +24,7 @@ export default {
         emulatorHost: process.browser ? "frontend" : "localhost",
         emulatorPort: 8080, // process.env.NODE_ENV === "development" ? process.env.FIRESTORE_EMULATOR_PORT : undefined,
         ssl: false,
+        ssr: false,
       },
       functions: false,
       storage: false,

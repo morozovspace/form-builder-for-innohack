@@ -1,7 +1,6 @@
 import schema from "@/static/schemas/modal/schema.json"
 import defs from "@/static/schemas/modal/defs.json"
 import confirmConfig from "@/static/modals/confirm.json"
-console.log("IMPORT")
 const lang = require("lodash/lang")
 export const state = () => ({
   list: [],
