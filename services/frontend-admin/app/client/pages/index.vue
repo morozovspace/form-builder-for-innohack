@@ -33,7 +33,6 @@ export default {
 </script>
 <template>
   <main class="index-page__wrapper">
-    <h1 @click="addNote">Hellssso fro s</h1>
-    {{ notes }}
+    <nuxt-link route="/signin">a</nuxt-link>
   </main>
 </template>
