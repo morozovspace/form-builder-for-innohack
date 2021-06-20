@@ -1,19 +1,19 @@
 {
-    "id": "confirm",
-    "label": "confirmation.modal.title",
-    "description": "",
-    "controls": [
-      {
-        "id": "cancel",
-        "label": "confirmation.controls.button.cancel",
-        "type": "danger",
-        "visible": true,
-        "timeout": 10000
-      },
-      {
-        "id": "confirm",
-        "label": "confirmation.controls.button.confirm",
-        "visible": true
-      }
-    ]
-  }
+  "id": "confirm",
+  "label": "confirmation.modal.title",
+  "description": "",
+  "controls": [
+    {
+      "id": "cancel",
+      "label": "confirmation.controls.button.cancel",
+      "type": "danger",
+      "visible": true,
+      "timeout": 10000
+    },
+    {
+      "id": "confirm",
+      "label": "confirmation.controls.button.confirm",
+      "visible": true
+    }
+  ]
+}

@@ -212,9 +212,19 @@ export default {
     },
     getErrorMessage(fieldId) {
       const field = this.$v.formValues[fieldId]
-      const validations = ["required", "email"]
+      const exclude = [
+        "$anyDirty",
+        "$model",
+        "$pending",
+        "$params",
+        "$anyError",
+        "$dirty",
+        "$invalid",
+        "$error",
+      ]
+      const validations = Object.keys(field).filter((v) => !exclude.includes(v))
       for (const v of validations) {
-        if (object.has(field, v) && field[v] === false) {
+        if (field[v] === false) {
           return this.$t(`form.validation.${v}`)
         }
       }
@@ -251,15 +261,30 @@ export default {
       for (const field of this.fields) {
         formValues[field.id] = {}
         for (const val of field.validations) {
-          formValues[field.id][val.id] = val.payload
+          if (lang.isString(val)) {
+            formValues[field.id][val] = this.validators[val]
+          } else if (lang.isObject(val)) {
+            const id =
+              lang.isNull(val.customID) || lang.isUndefined(val.customID)
+                ? val.id
+                : val.customID
+            formValues[field.id][id] = val.payload
+              ? this.validators[val.id](val.payload)
+              : this.validators[val.id]
+          }
+          /*
+          
+          formValues[field.id][id] = val.payload
             ? this.validators[val.id](val.payload)
             : this.validators[val.id]
+          */
         }
       }
       return {
         formValues,
       }
     } catch (e) {
+      console.log(e)
       this.showError(e)
     }
   },

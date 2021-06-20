@@ -224,7 +224,6 @@ export default {
       ]
       const validations = Object.keys(field).filter((v) => !exclude.includes(v))
       for (const v of validations) {
-        console.log(v, field[v], field)
         if (field[v] === false) {
           return this.$t(`form.validation.${v}`)
         }
@@ -269,7 +268,6 @@ export default {
               lang.isNull(val.customID) || lang.isUndefined(val.customID)
                 ? val.id
                 : val.customID
-            console.log("CEE", val.payload)
             formValues[field.id][id] = val.payload
               ? this.validators[val.id](val.payload)
               : this.validators[val.id]

@@ -25,7 +25,10 @@
       "field-type": "input",
       "label": "Password",
       "value": "",
-      "validations": ["required"]
+      "validations": ["required"],
+      "params": {
+        "type": "password"
+      }
     }
   ],
   "schema": [
@@ -41,10 +44,7 @@
             "id": "sameAs",
             "payload": "password2"
           }
-        ],
-        "params": {
-          "type": "password"
-        }
+        ]
       },
       {
         "id": "password2",

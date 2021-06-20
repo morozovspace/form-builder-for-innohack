@@ -1,3 +1,4 @@
+<!--
 <script>
 import { mapState, mapActions } from "vuex"
 export default {
@@ -28,19 +29,13 @@ export default {
     ...mapActions({
       addNote: "addNote",
     }),
-    async sendReq() {
-      try {
-        const res = await this.$axios.$get("/public/signin-form")
-        console.log(res)
-      } catch (e) {
-        console.log("E", e)
-      }
-    },
   },
 }
 </script>
 <template>
-  <main class="index-page__wrapper">
-    <button @click="sendReq">Create</button>
-  </main>
+  <main class="index-page__wrapper">Test</main>
+</template>
+-->
+<template>
+  <main class="index-page__wrapper">Test</main>
 </template>
