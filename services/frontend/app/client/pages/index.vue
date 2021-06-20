@@ -30,7 +30,7 @@ export default {
     }),
     async sendReq() {
       try {
-        const res = await this.$axios.$get("/create")
+        const res = await this.$axios.$get("/public/signin-form")
         console.log(res)
       } catch (e) {
         console.log("E", e)

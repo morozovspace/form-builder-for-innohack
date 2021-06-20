@@ -1,9 +1,8 @@
 const express = require('express')
-
 const router = express.Router()
 
-const apiV1 = require('./controllers/ApiRoute1')
+const Public = require('./controllers/Public')
 
-router.use(apiV1)
+router.use('/public', Public)
 
 module.exports = router

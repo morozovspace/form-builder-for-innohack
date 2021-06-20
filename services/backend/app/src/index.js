@@ -4,6 +4,7 @@ const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("../swagger_output.json")
 const app = require('./server').getAppInstance()
 const credentionals = require("../credentionals.json")
+const router = require('./routes')
 async function init () {
   try {
     admin.initializeApp({
@@ -13,7 +14,7 @@ async function init () {
     const server = await initServer()
     app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
     app.use(require('./middlewares/auth'))
-    // app.use(require('./routes'))
+    app.use(router)
     app.use(require('./utils/error').NotFound)
     app.use(require('./middlewares/error').ErrorHandler)
     server.listen(3010)
